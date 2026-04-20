@@ -971,10 +971,12 @@ function submitForm(stId,contactEl){
 }
 
 function showResult(){
+  // Thank-you screen removed — submission still happens silently in submit() above.
   var pa=document.getElementById('prog-container-above');
   var pb=document.getElementById('prog-container-inside-bottom');
   if(pa)pa.innerHTML='';if(pb)pb.innerHTML='';
-  document.getElementById('q-content').innerHTML='<div class="result anim-in"><div class="result-icon">Спасибо!</div><div class="result-title">Заявка принята!</div><div class="result-sub">Свяжемся в течение 15 минут</div>'+(PHONE?'<a class="result-phone" href="tel:+7 800 000-00-00">+7 800 000-00-00</a>':'')+'</div>';
+  var qc=document.getElementById('q-content');
+  if(qc)qc.innerHTML='';
 }
 
 // ── Calculator compute (global scope for inline handlers) ──
