@@ -612,4 +612,21 @@ We help B2C companies go beyond lead generation to achieve real growth. With us,
   });
 })();
 </script>
+<style>
+.framer-46tgvk{height:auto !important;min-height:520px;overflow:visible !important;align-items:stretch !important}
+.framer-46tgvk iframe[data-quiz-iframe]{display:block;width:100%;height:auto;min-height:520px;border:0;background:transparent;border-radius:inherit;transition:height .25s ease}
+</style>
+<script>
+(function(){
+  window.addEventListener('message', function(e){
+    if (!e || !e.data || e.data.type !== 'quizHeight') return;
+    var h = parseInt(e.data.height, 10);
+    if (!h || h < 100) return;
+    var iframe = document.querySelector('iframe[data-quiz-iframe]');
+    var host = document.getElementById('quiz') || document.querySelector('[data-quiz-host="1"]') || document.querySelector('.framer-46tgvk');
+    if (iframe) iframe.style.height = h + 'px';
+    if (host)   host.style.height   = h + 'px';
+  });
+})();
+</script>
 </body></html>

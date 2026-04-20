@@ -10,7 +10,7 @@
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
 html,body{background:transparent!important}
-body{overflow-x:hidden;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;
+body{overflow-x:hidden;display:flex;flex-direction:column;align-items:center;justify-content:flex-start;
   font-family:'Inter',system-ui,sans-serif;background:transparent;padding:16px 12px}
 .qw{width:100%;max-width:580px;margin:0 auto}
 .qcard{background:rgba(255,255,255,0);border-radius:20px;padding:32px 28px;
@@ -1172,6 +1172,31 @@ renderStep();renderProg();
     gs.src='https://maps.googleapis.com/maps/api/js?key='+GMAP_KEY+'&libraries=places&callback=_qbGmapInit&language='+(navigator.language||'en');
     gs.async=true;gs.defer=true;document.head.appendChild(gs);
   }
+})();
+</script>
+<script>
+(function(){
+  function postH(){
+    try{
+      var h = Math.max(
+        document.documentElement.scrollHeight,
+        document.body.scrollHeight,
+        document.documentElement.offsetHeight,
+        document.body.offsetHeight
+      );
+      parent.postMessage({type:'quizHeight', height:h}, '*');
+    }catch(e){}
+  }
+  window.addEventListener('load', function(){ postH(); setTimeout(postH, 100); setTimeout(postH, 500); });
+  window.addEventListener('resize', postH);
+  if (window.ResizeObserver){ try{ new ResizeObserver(postH).observe(document.body); }catch(e){} }
+  try{
+    var mo = new MutationObserver(function(){ postH(); });
+    document.addEventListener('DOMContentLoaded', function(){
+      mo.observe(document.body, {childList:true, subtree:true, attributes:true, characterData:true});
+    });
+  }catch(e){}
+  setInterval(postH, 1000);
 })();
 </script>
 </body>
